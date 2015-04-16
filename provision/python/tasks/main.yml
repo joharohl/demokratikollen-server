@@ -1,0 +1,24 @@
+- name: Install Python related ubuntu packages
+  apt: pkg={{ item }} state=installed
+  with_items:
+      - python-setuptools
+      - python-dev
+
+- name: Check if pip is installed
+  shell: 'pip'
+  register: result
+  args:
+    executable: /bin/bash
+  changed_when: False
+  ignore_errors: True
+
+- name: Install pip
+  shell: curl https://bootstrap.pypa.io/get-pip.py | python
+  args:
+    executable: /bin/bash
+  when: result|failed
+
+- name: Install required python packages
+  pip: name={{item}} state=present
+  with_items:
+    - docker-py

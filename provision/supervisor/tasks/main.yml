@@ -1,0 +1,4 @@
+- name: Copy the config for deployment.sh
+  copy: src=deployment.conf dest=/etc/supervisor/conf.d/deployment.conf
+  notify:
+      - Restart Supervisor

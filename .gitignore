@@ -1,0 +1,28 @@
+Lib/
+lib/
+Scripts/
+scripts/
+Include/
+include/
+build/
+bin/
+local/
+ghostdriver.log
+**/npm-debug.log
+
+#python c files
+*.pyc
+
+# setup.py things
+*.egg-info
+*.egg
+*.zip
+
+# Vagrant stuff
+.vagrant/
+
+#autosave
+*~
+
+#allowed keys.
+provision/users/files/authorized_keys

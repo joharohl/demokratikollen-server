@@ -1,0 +1,9 @@
+- hosts: VM
+  sudo: yes
+  roles:
+      - swap
+      - docker
+      - users
+      - packages
+      - python
+      - supervisor

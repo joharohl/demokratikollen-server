@@ -1,0 +1,14 @@
+- name: Create the deploy user.
+  user: name=deploy groups=sudo,docker
+
+- name: create .ssh dir
+  file: state=directory path=/home/deploy/.ssh
+
+- name: Copy the allowed_keys
+  copy: src=authorized_keys dest=/home/deploy/.ssh/authorized_keys
+
+- name: Set correct owner
+  file: path=/home/deploy/.ssh/authorized_keys owner=deploy
+
+- name: enable passwordless sudoing for the supervisor command
+  lineinfile: dest=/etc/sudoers state=present line="wercker ALL=(ALL)NOPASSWD:/usr/bin/supervisorctl"

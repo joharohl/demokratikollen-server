@@ -1,0 +1,10 @@
+# Unix-style line endings for everything
+* text eol=lf
+
+# binary stuff
+*.png -text
+*.jpg -text
+*.ttf -text
+*.woff -text
+*.otf -text
+*.eot -text
