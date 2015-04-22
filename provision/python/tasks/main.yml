@@ -5,7 +5,7 @@
       - python-dev
 
 - name: Check if pip is installed
-  shell: 'pip'
+  shell: 'pip3'
   register: result
   args:
     executable: /bin/bash
@@ -13,12 +13,13 @@
   ignore_errors: True
 
 - name: Install pip
-  shell: curl https://bootstrap.pypa.io/get-pip.py | python
+  shell: curl https://bootstrap.pypa.io/get-pip.py | python3
   args:
     executable: /bin/bash
   when: result|failed
 
 - name: Install required python packages
-  pip: name={{item}} state=present
+  pip: name={{item}} state=present executable=pip3
   with_items:
     - docker-py
+    - nose

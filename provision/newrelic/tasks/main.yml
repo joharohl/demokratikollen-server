@@ -1,0 +1,15 @@
+- name: Install newrelic python packages
+  pip: name={{item}} state=present executable=pip3
+  with_items:
+    - newrelic
+
+- name: Generate newrelic ini file.
+  sudo: yes
+  shell: newrelic-admin generate-config {{ lookup("env","NEW_RELIC_LICENCE_KEY") }} /etc/newrelic.ini
+
+- name: Set the app-name
+  sudo: yes
+  replace: dest=/etc/newrelic.ini regexp='Python Application' replace='Demokratikollen'
+
+#- name: Validate the config.
+#  shell: newrelic-admin validate-config /etc/newrelic.ini
