@@ -6,3 +6,22 @@
 
 - name: install docker
   apt: name=lxc-docker
+
+# NOT NEEDED ATM, BUT MIGHT BE USEFUL IN THE FUTURE
+#- name: Create the registry dir.
+#  file: state=directory dest=/root/docker_registry
+
+#- name: Copy the registry files.
+#  copy: src={{item}} dest=/root/docker_registry/{{item}}
+#  with_items:
+#    - Dockerfile
+#    - registry_config.yml
+
+#- name: Build the docker-registry.
+#  shell: docker build -t demokratikollen/registry /root/docker_registry
+
+#- name: Check if we have a registry-data container running.
+#  docker:
+#    name: registry-data
+#    image: demokratikollen/registry
+#    state: started

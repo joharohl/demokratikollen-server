@@ -1,0 +1,11 @@
+- hosts: remote
+  sudo: yes
+  roles:
+      - swap
+      - docker
+      - users
+      - packages
+      - python
+      - newrelic
+      - supervisor
+      - {role: security, open_ports: [80,22]}

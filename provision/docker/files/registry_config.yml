@@ -1,0 +1,14 @@
+version: 0.1
+log:
+  level: debug
+  fields:
+    service: registry
+    environment: production
+storage:
+    cache:
+        layerinfo: inmemory
+    filesystem:
+        rootdirectory: /var/registry-data
+http:
+    addr: localhost:5000
+    secret: asecretsecret

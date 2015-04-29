@@ -26,8 +26,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Forward postgresql port
   config.vm.network "forwarded_port", guest: 5432, host: 5433
   # Forward flask app port
-  config.vm.network "forwarded_port", guest: 5000, host: 5000
-
+  config.vm.network "forwarded_port", guest: 80, host: 5000
+	
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
   config.ssh.forward_agent = true
@@ -47,15 +47,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Provisioning configuration for shell script.
     config.vm.provision "shell" do |sh|
       sh.path = "provision/windows.sh"
-      sh.args = "provision/playbook.yml"
+      sh.args = "provision/VM.yml"
       sh.privileged = false
     end
   else
     # Provisioning configuration for Ansible (for Mac/Linux hosts).
     config.vm.provision "ansible" do |ansible|
-      ansible.playbook = "provision/playbook.yml"
+      ansible.playbook = "provision/VM.yml"
       ansible.groups = {
-        "VM" => ["default"]
+        "local" => ["default"]
       }
     end
   end
