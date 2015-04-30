@@ -10,5 +10,5 @@
 - name: Set correct owner
   file: path=/home/deploy/.ssh/authorized_keys owner=deploy
 
-- name: enable passwordless sudoing for the supervisor command
-  lineinfile: dest=/etc/sudoers state=present line="wercker ALL=(ALL)NOPASSWD:/usr/bin/supervisorctl"
+- name: Restart docker.
+  service: name=docker state=restarted

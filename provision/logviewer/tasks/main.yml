@@ -1,0 +1,3 @@
+- name: Copy logviewer files.
+  copy: src=logviewer dest=/home/deploy/
+

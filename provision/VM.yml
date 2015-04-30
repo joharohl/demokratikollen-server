@@ -7,5 +7,6 @@
       - packages
       - python
       - newrelic
+      - logviewer
       - supervisor
       - {role: security, open_ports: [80,22]}

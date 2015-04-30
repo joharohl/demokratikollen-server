@@ -1,4 +1,4 @@
 - name: Copy the config for deployment.sh
-  copy: src=deployment.conf dest=/etc/supervisor/conf.d/deployment.conf
+  copy: src=logviewer.conf dest=/etc/supervisor/conf.d/logviewer.conf
   notify:
       - Restart Supervisor
