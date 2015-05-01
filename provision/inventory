@@ -1,8 +1,5 @@
-VM root@146.185.188.12
-demokratikollen root@demokratikollen.se
-
 [local]
-VM
+localhost
 
 [remote]
-demokratikollen
+root@demokratikollen.se
